@@ -16,4 +16,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Live demo
 
-...Updating
+https://sneaker-blue.vercel.app/
