@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import CheckLogo from "./assets/check.png";
 
 export interface IProductItemProps {
   id: number;
@@ -7,13 +10,18 @@ export interface IProductItemProps {
   description: string;
   price: number;
   color: string;
+  isAdded: number;
+  addToCart: (id: number) => any;
 }
 
 export default function ProductItem(props: IProductItemProps) {
+  function addToCart(id: number) {
+    props.addToCart(id);
+  }
   return (
-    <div className="card w-96">
+    <div className="card w-96 z-10">
       <div
-        className="justify-center flex ml-8 mr-8 mt-8"
+        className="justify-center flex ml-8 mr-8 mt-4"
         style={{ background: props.color, borderRadius: "30px" }}
       >
         <Image
@@ -41,14 +49,32 @@ export default function ProductItem(props: IProductItemProps) {
           <div style={{ fontSize: "18px", fontWeight: "700" }}>
             ${props.price}
           </div>
-          <button
-            className="btn rounded-3xl"
-            style={{
-              backgroundColor: "#f6c90e",
-            }}
-          >
-            ADD TO CART
-          </button>
+
+          {props.isAdded == 1 ? (
+            <button
+              className="btn btn-circle disable"
+              style={{
+                backgroundColor: "#f6c90e",
+              }}
+            >
+              <Image
+                src={CheckLogo}
+                alt="Checked"
+                width={26}
+                height={26}
+              ></Image>
+            </button>
+          ) : (
+            <button
+              onClick={() => addToCart(props.id)}
+              className="btn rounded-3xl"
+              style={{
+                backgroundColor: "#f6c90e",
+              }}
+            >
+              ADD TO CART
+            </button>
+          )}
         </div>
       </div>
     </div>

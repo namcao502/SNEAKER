@@ -16,3 +16,65 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.base-bg-card {
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 3.2px 2.2px rgba(0, 0, 0, 0.02),
+    0 7px 5.4px rgba(0, 0, 0, 0.028), 0 12.1px 10.1px rgba(0, 0, 0, 0.035),
+    0 19.8px 18.1px rgba(0, 0, 0, 0.042), 0 34.7px 33.8px rgba(0, 0, 0, 0.05),
+    0 81px 81px rgba(0, 0, 0, 0.07);
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.base-bg-card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  background-color: #f6c90e;
+  top: -20%;
+  left: -50%;
+  z-index: 1;
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.main::before {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 300%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  transform: translateX(-50%) skewY(-8deg);
+  background-color: #f6c90e;
+  z-index: 0;
+  -webkit-animation: App_wave_3CtRm 8s ease-in-out infinite alternate;
+  animation: App_wave_3CtRm 8s ease-in-out infinite alternate;
+}
+
+@keyframes App_wave_3CtRm {
+  0% {
+    transform: translateX(-50%) skew(0deg, -8deg);
+  }
+  100% {
+    transform: translateX(-30%) skew(8deg, -4deg);
+  }
+}
